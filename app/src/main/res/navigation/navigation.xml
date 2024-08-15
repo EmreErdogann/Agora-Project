@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.agura.task.presentation.screen.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_callFragment2"
+            app:destination="@id/callFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_usernameSetupFragment"
+            app:destination="@id/usernameSetupFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/usernameSetupFragment"
+        android:name="com.agura.task.presentation.screen.UsernameSetupFragment"
+        android:label="fragment_username_setup"
+        tools:layout="@layout/fragment_username_setup" />
+
+    <fragment
+        android:id="@+id/callFragment"
+        android:name="com.agura.task.presentation.screen.CallFragment"
+        android:label="fragment_call"
+        tools:layout="@layout/fragment_call" />
+
+
+
+
+</navigation>
