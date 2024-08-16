@@ -29,7 +29,7 @@ class StartCallUseCase @Inject constructor(
         return try {
             val config = RtcEngineConfig().apply {
                 mContext = applicationContext
-                mAppId = Constants.APP_ID
+                mAppId = Constants.APP_CALL_ID
                 mEventHandler = object : IRtcEngineEventHandler() {
                     override fun onUserJoined(uid: Int, elapsed: Int) {
                         coroutineScope.launch {

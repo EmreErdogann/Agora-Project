@@ -12,8 +12,13 @@ object Constants {
     const val USERNAME_LOCAL_EMPTY = "Username kayıtlı değil"
 
 
-    const val APP_ID = "9b4b2783c3464804ad506ee1f5c14e2a"
-    const val APP_CERTIFICATE = "15b9a422a3064c5bb762810fc8d6a71f"
-    const val APP_CHANNAL_NAME = "test"
-    const val APP_UI = 0
+    //AGORA CALL
+    const val APP_CALL_ID = "9b4b2783c3464804ad506ee1f5c14e2a"
+    const val APP_CALL_CERTIFICATE = "15b9a422a3064c5bb762810fc8d6a71f"
+    const val APP_CALL_CHANNAL_NAME = "test"
+    const val APP_CALL_UI = 0
+
+    //AGORA CHAT
+
+
 }

@@ -18,10 +18,10 @@ class JoinChannelUseCase @Inject constructor() {
         val timestamp = (System.currentTimeMillis() / 1000 * 60).toInt()
 
         val token = tokenBuilder.buildTokenWithUid(
-            com.agura.task.core.utils.Constants.APP_ID,
-            com.agura.task.core.utils.Constants.APP_CERTIFICATE,
-            com.agura.task.core.utils.Constants.APP_CHANNAL_NAME,
-            com.agura.task.core.utils.Constants.APP_UI,
+            com.agura.task.core.utils.Constants.APP_CALL_ID,
+            com.agura.task.core.utils.Constants.APP_CALL_CERTIFICATE,
+            com.agura.task.core.utils.Constants.APP_CALL_CHANNAL_NAME,
+            com.agura.task.core.utils.Constants.APP_CALL_UI,
             RtcTokenBuilder2.Role.ROLE_PUBLISHER, timestamp, timestamp
         )
 
@@ -30,7 +30,7 @@ class JoinChannelUseCase @Inject constructor() {
         options.clientRoleType = Constants.CLIENT_ROLE_BROADCASTER
 
         mRtcEngine.startPreview()
-        mRtcEngine.joinChannel(token, com.agura.task.core.utils.Constants.APP_CHANNAL_NAME, com.agura.task.core.utils.Constants.APP_UI, options)
+        mRtcEngine.joinChannel(token, com.agura.task.core.utils.Constants.APP_CALL_CHANNAL_NAME, com.agura.task.core.utils.Constants.APP_CALL_UI, options)
 
     }
 }

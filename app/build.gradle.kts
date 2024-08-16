@@ -66,6 +66,7 @@ dependencies {
 
     //Agora SDK
     implementation ("io.agora.rtc:full-sdk:4.3.2")
+    implementation ("io.agora.rtc:chat-sdk:1.2.1")
 
 
     implementation ("commons-codec:commons-codec:1.9")

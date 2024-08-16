@@ -21,3 +21,7 @@
 #-renamesourcefileattribute SourceFile
 
 -keep class io.agora.**{*;}
+
+
+-keep class io.agora.** {*;}
+-dontwarn  io.agora.**
