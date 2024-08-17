@@ -134,6 +134,7 @@ class CallViewModel @Inject constructor(
 
     override fun onCleared() {
         super.onCleared()
+        leaveChannel()
         (_startCallUiState.value as CallState.Success).rtcEngine?.let {
             clearRtcEngineUseCase.execute(it)
         }

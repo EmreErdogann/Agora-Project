@@ -28,6 +28,8 @@ object Constants {
     //AGORA CHAT
 
     const val APP_CHAT_KEY = "411194697#1383771"
-
+    const val APP_CHAT_ID = "008577dca34748b0be26f123db0f27c8"
+    const val APP_CHAT_CERTIFICATE = "d9e18f64b93d4676896ea2c1d08a3079"
+    const val APP_CHAT_CHANNEL_NAME = "test2"
 
 }
