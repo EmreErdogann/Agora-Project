@@ -1,5 +1,6 @@
 package com.agura.task.domain.usecase.chat
 
+import com.agura.task.core.utils.Constants
 import com.agura.task.domain.state.chat.SendMessageState
 import io.agora.CallBack
 import io.agora.chat.ChatClient
@@ -14,7 +15,7 @@ import kotlin.coroutines.suspendCoroutine
 class SendMessageUseCase @Inject constructor() {
 
     suspend fun execute(content: String, agoraChatClient: ChatClient): SendMessageState {
-        if (content.isEmpty()) return SendMessageState.EmptyContent("Boş değer girmeyiniz.")
+        if (content.isEmpty()) return SendMessageState.EmptyContent(Constants.SEND_CHAT_EMPTY_VALUE)
 
         return suspendCoroutine { continuation ->
             val message = ChatMessage.createTextSendMessage(content, "Test")

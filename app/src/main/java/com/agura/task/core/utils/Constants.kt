@@ -11,6 +11,9 @@ object Constants {
     //GET_USER_NAME
     const val USERNAME_LOCAL_EMPTY = "Username kayıtlı değil"
 
+    //CHAT_USECASE
+    const val SEND_CHAT_EMPTY_VALUE = "Boş değer girmeyiniz."
+
 
     //AGORA CALL
     const val APP_CALL_ID = "c61e6842c1124f4ba73f79447ccbd883"
@@ -19,6 +22,8 @@ object Constants {
     const val APP_CALL_UI = 0
 
     //AGORA CHAT
+
+    const val APP_CHAT_KEY = "411194697#1383771"
 
 
 }

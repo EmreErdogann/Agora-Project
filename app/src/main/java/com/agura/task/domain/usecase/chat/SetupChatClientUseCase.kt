@@ -1,6 +1,7 @@
 package com.agura.task.domain.usecase.chat
 
 import android.content.Context
+import com.agura.task.core.utils.Constants
 import com.agura.task.domain.state.chat.SetupChatState
 import io.agora.chat.ChatClient
 import io.agora.chat.ChatOptions
@@ -16,7 +17,7 @@ class SetupChatClientUseCase @Inject constructor(
 
         return try {
             val options = ChatOptions().apply {
-                appKey = "411194697#1383771"
+                appKey = Constants.APP_CHAT_KEY
             }
 
             val chatClient = ChatClient.getInstance()
