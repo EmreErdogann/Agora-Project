@@ -13,8 +13,8 @@ object Constants {
 
 
     //AGORA CALL
-    const val APP_CALL_ID = "9b4b2783c3464804ad506ee1f5c14e2a"
-    const val APP_CALL_CERTIFICATE = "15b9a422a3064c5bb762810fc8d6a71f"
+    const val APP_CALL_ID = "c61e6842c1124f4ba73f79447ccbd883"
+    const val APP_CALL_CERTIFICATE = "d6a3a1f64ad94f64a35c16309b275040"
     const val APP_CALL_CHANNAL_NAME = "test"
     const val APP_CALL_UI = 0
 
