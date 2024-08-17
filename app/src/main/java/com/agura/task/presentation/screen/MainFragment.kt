@@ -38,7 +38,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                         when (state) {
                             is GetUsernameState.Failure -> findNavController().navigate(R.id.usernameSetupFragment)
 
-                            is GetUsernameState.Success -> findNavController().navigate(R.id.callFragment)
+                            is GetUsernameState.Success -> findNavController().navigate(R.id.startCallFragment)
 
                             else -> {}
                         }

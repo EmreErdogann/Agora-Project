@@ -71,10 +71,9 @@ class CallFragment : Fragment(R.layout.fragment_call) {
                 launch {
                     viewModel.setupChatUiState.collect {
                         when(it) {
-                            is SetupChatState.Success -> {
-                                viewModel.chatLogin()
-                            }
+                            is SetupChatState.Success -> viewModel.chatLogin()
 
+                            is SetupChatState.Failure -> context?.showToast(it.message)
                             else -> {}
                         }
                     }
@@ -83,14 +82,15 @@ class CallFragment : Fragment(R.layout.fragment_call) {
                 launch {
                     viewModel.chatSendMessageUiState.collect {
                         when(it) {
-                            is SendMessageState.EmptyContent -> {
-                                context?.showToast(it.message)
-                            }
+                            is SendMessageState.EmptyContent -> context?.showToast(it.message)
 
                             is SendMessageState.Success -> {
                                 binding.contentEditText.setText("")
                                 displayMessage(it.content,true)
                             }
+
+                            is SendMessageState.Failure -> context?.showToast(it.error + " " +  it.code)
+
                             else -> {}
                         }
                     }

@@ -1,9 +1,10 @@
 package com.agura.task.presentation.viewmodel
 
 import android.app.Activity
-import android.util.Log
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.agura.task.core.utils.Constants
 import com.agura.task.domain.state.CallEvent
 import com.agura.task.domain.state.CallState
 import com.agura.task.domain.state.chat.ChatListenerState
@@ -19,7 +20,6 @@ import com.agura.task.domain.usecase.chat.ChatLoginUseCase
 import com.agura.task.domain.usecase.chat.SendMessageUseCase
 import com.agura.task.domain.usecase.chat.SetupChatClientUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.agora.rtc2.IRtcEngineEventHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -38,7 +38,8 @@ class CallViewModel @Inject constructor(
     private val setupChatClientUseCase: SetupChatClientUseCase,
     private val chatListenerUseCase: ChatListenerUseCase,
     private val sendMessageUseCase: SendMessageUseCase,
-    private val chatLoginUseCase : ChatLoginUseCase
+    private val chatLoginUseCase: ChatLoginUseCase,
+    private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private val _startCallUiState by lazy { MutableStateFlow<CallState>(CallState.Idle) }
@@ -46,7 +47,7 @@ class CallViewModel @Inject constructor(
 
 
     private val _rtcEngineEventState = MutableSharedFlow<CallEvent>()
-    val rtcEngineEventState = _rtcEngineEventState.asSharedFlow()
+    val rtcEngineEventState by lazy { _rtcEngineEventState.asSharedFlow() }
 
     private val _setupChatUiState by lazy { MutableStateFlow<SetupChatState>(SetupChatState.Idle) }
     val setupChatUiState by lazy { _setupChatUiState.asStateFlow() }
@@ -54,8 +55,8 @@ class CallViewModel @Inject constructor(
     private val _chatListenerUiState by lazy { MutableStateFlow<ChatListenerState>(ChatListenerState.Idle) }
     val chatListenerUiState by lazy { _chatListenerUiState.asStateFlow() }
 
-    private val _chatSendMessageUiState by lazy { MutableStateFlow<SendMessageState>(SendMessageState.Idle) }
-    val chatSendMessageUiState by lazy { _chatSendMessageUiState.asStateFlow() }
+    private val _chatSendMessageUiState = MutableSharedFlow<SendMessageState>()
+    val chatSendMessageUiState by lazy { _chatSendMessageUiState.asSharedFlow() }
 
     init {
         start()
@@ -77,7 +78,7 @@ class CallViewModel @Inject constructor(
     }
 
 
-     private fun joinChannel() {
+    private fun joinChannel() {
         (_startCallUiState.value as CallState.Success).rtcEngine?.let {
             joinChannelUseCase.execute(it)
         }
@@ -120,7 +121,8 @@ class CallViewModel @Inject constructor(
 
     fun sendMessage(content: String) = viewModelScope.launch(Dispatchers.Main) {
         (_setupChatUiState.value as SetupChatState.Success).chatClient?.let {
-            _chatSendMessageUiState.emit(sendMessageUseCase.execute(content, it))
+            val sendToUsername = savedStateHandle.get<String>(Constants.CALL_PAGE_ARG) ?: ""
+            _chatSendMessageUiState.emit(sendMessageUseCase.execute(content, it, sendToUsername))
         }
     }
 

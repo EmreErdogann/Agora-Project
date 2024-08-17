@@ -14,18 +14,22 @@ import kotlin.coroutines.suspendCoroutine
 @Singleton
 class SendMessageUseCase @Inject constructor() {
 
-    suspend fun execute(content: String, agoraChatClient: ChatClient): SendMessageState {
+    suspend fun execute(
+        content: String,
+        agoraChatClient: ChatClient,
+        sendUserName: String
+    ): SendMessageState {
         if (content.isEmpty()) return SendMessageState.EmptyContent(Constants.SEND_CHAT_EMPTY_VALUE)
 
         return suspendCoroutine { continuation ->
-            val message = ChatMessage.createTextSendMessage(content, "Test")
+            val message = ChatMessage.createTextSendMessage(content, sendUserName)
             message.setMessageStatusCallback(object : CallBack {
                 override fun onSuccess() {
                     continuation.resume(SendMessageState.Success(content))
                 }
 
                 override fun onError(code: Int, error: String) {
-                    continuation.resume(SendMessageState.Failure(code, content))
+                    continuation.resume(SendMessageState.Failure(code, error))
                 }
             })
 

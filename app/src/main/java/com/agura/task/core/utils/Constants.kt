@@ -2,6 +2,10 @@ package com.agura.task.core.utils
 
 object Constants {
 
+
+    //NAVIGATION_ARGS
+    const val CALL_PAGE_ARG= "arg_user_name"
+
     //GET_USER_NAME_USE_CASE
     const val USERNAME_EMPTY_ERROR = "Username boş olamaz"
     const val USERNAME_LENGTH_ERROR = "Username minimum 6 karakter olmalıdır"

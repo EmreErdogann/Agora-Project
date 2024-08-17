@@ -11,25 +11,48 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_mainFragment_to_callFragment2"
-            app:destination="@id/callFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_usernameSetupFragment"
             app:destination="@id/usernameSetupFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_startCallFragment"
+            app:destination="@id/startCallFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/usernameSetupFragment"
         android:name="com.agura.task.presentation.screen.UsernameSetupFragment"
         android:label="fragment_username_setup"
-        tools:layout="@layout/fragment_username_setup" />
+        tools:layout="@layout/fragment_username_setup" >
+        <action
+            android:id="@+id/action_usernameSetupFragment_to_startCallFragment"
+            app:destination="@id/startCallFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/callFragment"
         android:name="com.agura.task.presentation.screen.CallFragment"
         android:label="fragment_call"
-        tools:layout="@layout/fragment_call" />
+        tools:layout="@layout/fragment_call">
 
+
+        <argument
+            android:name="arg_user_name"
+            app:argType="string"
+            app:nullable="true" />
+
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/startCallFragment"
+        android:name="com.agura.task.presentation.screen.StartCallFragment"
+        android:label="fragment_call"
+        tools:layout="@layout/fragment_start_call" >
+        <action
+            android:id="@+id/action_startCallFragment_to_callFragment"
+            app:destination="@id/callFragment" />
+    </fragment>
 
 
 

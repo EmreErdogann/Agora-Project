@@ -11,7 +11,8 @@ class ChatLoginUseCase @Inject constructor() {
 
     fun execute(agoraChatClient: ChatClient) {
 
-        agoraChatClient.loginWithAgoraToken("as12-312ad-bbdfa8", "007eJxTYDgvrOBgxVIS8+rpu1Ptx4/YNM05yGv7YqrdpF87nHxj044oMBgYWJiam6ckJxqbmJtYJBkkpRqZpRkaGackGaQZmSdbVArvT2sIZGTwWuPLysjAysAIhCC+CkOKgblRorm5ga5pkmWqrqFhapquRbKlsa6ZpbmRhaVBmqWhWRIAiWsm8Q==", object : CallBack {
+        val token = "007eJxTYFARCTwkz3Sd49TBLJbS4gfbPxgLGp/irDda+fn1rlNqJZwKDAYGFqbm5inJicYm5iYWSQZJqUZmaYZGxilJBmlG5skW0csPpDUEMjLkHHrLxMjAysAIhCC+CkOKgblRorm5ga5pkmWqrqFhapquRbKlsa6ZpbmRhaVBmqWhWRIA5rQmNg=="
+        agoraChatClient.loginWithAgoraToken("as12-312ad-bbdfa8", token, object : CallBack {
             override fun onSuccess() {
                println("Başarılı")
             }
