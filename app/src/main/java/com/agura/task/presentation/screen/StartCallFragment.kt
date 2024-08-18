@@ -10,9 +10,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.agura.task.R
-import com.agura.task.core.exts.showToast
 import com.agura.task.databinding.FragmentStartCallBinding
 import com.agura.task.domain.state.StartCallUiState
+import com.agura.task.presentation.util.showCustomOneOptionDialog
 import com.agura.task.presentation.viewmodel.StartCallViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -39,7 +39,15 @@ class StartCallFragment : Fragment(R.layout.fragment_start_call) {
                         when (state) {
                             is StartCallUiState.Success -> findNavController().navigate(StartCallFragmentDirections.actionStartCallFragmentToCallFragment(state.username))
 
-                            is StartCallUiState.Failure -> context?.showToast(state.message)
+                            is StartCallUiState.Failure -> {
+                                activity?.showCustomOneOptionDialog(
+                                    "HATA",
+                                    state.message,
+                                    "Tamam",
+                                    cancelable = true
+                                ) { _, _ ->
+                                }
+                            }
 
                             else -> {}
                         }
