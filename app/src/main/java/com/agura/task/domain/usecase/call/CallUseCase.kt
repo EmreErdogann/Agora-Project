@@ -16,7 +16,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class StartCallUseCase @Inject constructor(
+class CallUseCase @Inject constructor(
     private val applicationContext: Context,
     private val coroutineScope: CoroutineScope
 ) {

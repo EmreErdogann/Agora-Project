@@ -14,7 +14,7 @@ import com.agura.task.domain.usecase.PermissionUseCase
 import com.agura.task.domain.usecase.call.ClearRtcEngineUseCase
 import com.agura.task.domain.usecase.call.JoinChannelUseCase
 import com.agura.task.domain.usecase.call.LeaveChannelUseCase
-import com.agura.task.domain.usecase.call.StartCallUseCase
+import com.agura.task.domain.usecase.call.CallUseCase
 import com.agura.task.domain.usecase.chat.ChatListenerUseCase
 import com.agura.task.domain.usecase.chat.ChatLoginUseCase
 import com.agura.task.domain.usecase.chat.SendMessageUseCase
@@ -30,7 +30,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CallViewModel @Inject constructor(
-    private val startCallUseCase: StartCallUseCase,
+    private val startCallUseCase: CallUseCase,
     private val joinChannelUseCase: JoinChannelUseCase,
     private val leaveChannelUseCase: LeaveChannelUseCase,
     private val clearRtcEngineUseCase: ClearRtcEngineUseCase,

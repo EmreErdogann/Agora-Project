@@ -12,10 +12,12 @@
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_usernameSetupFragment"
-            app:destination="@id/usernameSetupFragment" />
+            app:destination="@id/usernameSetupFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_mainFragment_to_startCallFragment"
-            app:destination="@id/startCallFragment" />
+            app:destination="@id/startCallFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -25,7 +27,8 @@
         tools:layout="@layout/fragment_username_setup" >
         <action
             android:id="@+id/action_usernameSetupFragment_to_startCallFragment"
-            app:destination="@id/startCallFragment" />
+            app:destination="@id/startCallFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -51,7 +54,8 @@
         tools:layout="@layout/fragment_start_call" >
         <action
             android:id="@+id/action_startCallFragment_to_callFragment"
-            app:destination="@id/callFragment" />
+            app:destination="@id/callFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
 
