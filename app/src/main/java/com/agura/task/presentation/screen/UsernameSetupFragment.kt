@@ -37,7 +37,7 @@ class UsernameSetupFragment : Fragment(R.layout.fragment_username_setup) {
                         binding.isLoading.root.visibility = if (state is UsernameSetupState.Loading) View.VISIBLE else View.GONE
 
                         when (state) {
-                            is UsernameSetupState.Success -> findNavController().navigate(R.id.startCallFragment)
+                            is UsernameSetupState.Success -> findNavController().navigate(UsernameSetupFragmentDirections.actionUsernameSetupFragmentToStartCallFragment())
 
                             is UsernameSetupState.Failure -> context?.showToast(state.message)
 

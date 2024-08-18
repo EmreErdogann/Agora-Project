@@ -36,9 +36,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                         binding.isLoading.root.visibility = if (state is GetUsernameState.Loading) View.VISIBLE else View.GONE
 
                         when (state) {
-                            is GetUsernameState.Failure -> findNavController().navigate(R.id.usernameSetupFragment)
+                            is GetUsernameState.Failure -> findNavController().navigate(MainFragmentDirections.actionMainFragmentToUsernameSetupFragment())
 
-                            is GetUsernameState.Success -> findNavController().navigate(R.id.startCallFragment)
+                            is GetUsernameState.Success -> findNavController().navigate(MainFragmentDirections.actionMainFragmentToStartCallFragment())
 
                             else -> {}
                         }
